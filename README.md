@@ -2,7 +2,7 @@
 
 Welcome to the official portfolio of **ABHISHEK S KUMAR**, a passionate Software Engineer and Cybersecurity Enthusiast. This responsive, dark-themed single-page site highlights technical expertise, featured projects, certifications, and contact info.
 
-🌐 **Live Site**: [https://yourusername.github.io/your-repo-name](https://yourusername.github.io/your-repo-name)  
+🌐 **Live Site**: [https://yourusername.github.io/your-repo-name](https://abhishek-s-kumar.github.io/portfolio/)  
 📝 **Resume**: Available on the homepage
 
 ---
