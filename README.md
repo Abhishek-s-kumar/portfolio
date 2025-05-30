@@ -53,25 +53,5 @@ Or double-click `index.html`.
 
 ---
 
-## 🚀 Deployment on GitHub Pages
 
-1. Push this repository to GitHub
-2. Go to **Settings → Pages**
-3. Set Source: `main` branch → `/ (root)`
-4. Save & wait ~30 seconds
-5. Visit `https://yourusername.github.io/your-repo-name`
 
----
-
-## 🧑‍💼 Author
-
-**ABHISHEK S KUMAR**  
-- 📧 [abhishekskumar2002@gmail.com](mailto:abhishekskumar2002@gmail.com)  
-- 🌍 [LinkedIn](https://linkedin.com) (Add link)  
-- 🐙 [GitHub](https://github.com/yourusername)
-
----
-
-## 📄 License
-
-This project is open for educational or personal use. Attribution appreciated.
