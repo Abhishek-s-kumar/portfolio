@@ -260,6 +260,7 @@ section { padding:7rem 0; position:relative; z-index:1; }
 .edu-deg { font-size:.8rem; color:var(--cyan); margin-bottom:.2rem; }
 .edu-inst { font-size:.78rem; color:var(--muted); }
 .edu-cgpa { font-size:.75rem; color:var(--green); margin-top:.4rem; font-weight:700; }
+.edu-rank { font-size:.75rem; color:var(--amber); margin-top:.3rem; font-weight:700; }
 
 /* ── INTERNSHIPS ── */
 .intern-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; }
@@ -492,7 +493,6 @@ footer .muted { font-size:.78rem; color:var(--muted); margin-bottom:1.5rem; }
         <div class="term-out">→ <span class="val">Security Engineer | ML Researcher</span></div><br>
         <div class="term-line"><span class="term-prompt">❯</span><span class="term-cmd">&nbsp;cat edu.json</span></div>
         <div class="term-out">→ M.Tech Cyber Security @ CUSAT</div>
-        <div class="term-out">&nbsp;&nbsp;CGPA: <span class="num">9.05</span>/10</div><br>
         <div class="term-line"><span class="term-prompt">❯</span><span class="term-cmd">&nbsp;cat status.log</span></div>
         <div class="term-out">→ Assistant Professor: <span class="val">NSS CE, Palakkad ✓</span></div>
         <div class="term-out">→ IITM Project Assistant: <span class="val">Active ✓</span></div>
@@ -535,14 +535,13 @@ footer .muted { font-size:.78rem; color:var(--muted); margin-bottom:1.5rem; }
           <h4>Master of Technology (M.Tech)</h4>
           <div class="edu-deg">Computer Science &amp; Engineering — Cyber Security</div>
           <div class="edu-inst">Cochin University of Science and Technology (CUSAT)</div>
-          <div class="edu-cgpa">CGPA: 9.05 / 10</div>
+          <div class="edu-rank">🏆 2nd Rank Holder</div>
         </div>
         <div class="edu-card">
           <div class="edu-date">2020 – 2024</div>
           <h4>Bachelor of Technology (B.Tech)</h4>
           <div class="edu-deg">Computer Science &amp; Engineering</div>
           <div class="edu-inst">Ahalia School of Engineering &amp; Technology</div>
-          <div class="edu-cgpa">CGPA: 8.05 / 10</div>
         </div>
       </div>
     </div>
@@ -901,22 +900,12 @@ footer .muted { font-size:.78rem; color:var(--muted); margin-bottom:1.5rem; }
 
 </div><!-- /site -->
 
-<!-- ══════════════════════════════════════════
-     WEBGL FLUID — canvas already in DOM above
-     Load fluid.js after DOM ready
-     ════════════════════════════════════════ -->
 <script>
-// Inject canvas global before fluid.js executes
 const canvas = document.getElementById('fluid-canvas');
 </script>
 <script src="fluid.js"></script>
 
 <script>
-/* ══════════════════════════════════════════
-   PRETEXT-INSPIRED KINETIC NAME CANVAS
-   Uses Canvas 2D text measurement (ala pretext's accurate measurement)
-   to render the name with per-letter reactive animation
-   ════════════════════════════════════════ */
 (function() {
   const nc = document.getElementById('name-canvas');
   const ctx = nc.getContext('2d');
@@ -927,19 +916,18 @@ const canvas = document.getElementById('fluid-canvas');
 
   function Letter(char, x, y, size, row) {
     this.char = char;
-    this.bx = x; this.by = y; // base pos
+    this.bx = x; this.by = y;
     this.x = x; this.y = y;
     this.vx = 0; this.vy = 0;
     this.size = size;
     this.row = row;
     this.alpha = 0;
     this.targetAlpha = 1;
-    this.hue = row === 0 ? 150 : 185; // green vs cyan tint
+    this.hue = row === 0 ? 150 : 185;
     this.glitch = 0;
   }
 
   function measure(text, size) {
-    // Pretext approach: use canvas measurement for accurate layout
     ctx.font = `900 ${size}px 'Bebas Neue', sans-serif`;
     return ctx.measureText(text).width;
   }
@@ -953,7 +941,6 @@ const canvas = document.getElementById('fluid-canvas');
     const size1 = H * 0.48;
     const size2 = H * 0.38;
 
-    // Measure total widths for centering
     const chars1 = LINE1.split('');
     const chars2 = LINE2.split('');
 
@@ -962,7 +949,6 @@ const canvas = document.getElementById('fluid-canvas');
     ctx.font = `900 ${size2}px 'Bebas Neue', sans-serif`;
     const w2 = ctx.measureText(LINE2).width;
 
-    // Row 1
     let x = (W - w1) / 2;
     const y1 = size1 * 0.88;
     ctx.font = `900 ${size1}px 'Bebas Neue', sans-serif`;
@@ -972,7 +958,6 @@ const canvas = document.getElementById('fluid-canvas');
       x += cw;
     }
 
-    // Row 2
     x = (W - w2) / 2;
     const y2 = H - size2 * 0.18;
     ctx.font = `900 ${size2}px 'Bebas Neue', sans-serif`;
@@ -982,7 +967,6 @@ const canvas = document.getElementById('fluid-canvas');
       x += cw;
     }
 
-    // Stagger alpha reveal
     letters.forEach((l, i) => { l.alpha = 0; setTimeout(() => { l.targetAlpha = 1; }, i * 60 + 300); });
   }
 
@@ -999,7 +983,6 @@ const canvas = document.getElementById('fluid-canvas');
         l.vy += (dy / dist) * force * 18;
       }
 
-      // Spring back
       l.vx += (l.bx - l.x) * k;
       l.vy += (l.by - l.y) * k;
       l.vx *= damp; l.vy *= damp;
@@ -1007,7 +990,6 @@ const canvas = document.getElementById('fluid-canvas');
 
       l.alpha += (l.targetAlpha - l.alpha) * 0.06;
 
-      // Occasional glitch on hover
       if (dist < repel * 0.5 && Math.random() < 0.04) l.glitch = 3;
       if (l.glitch > 0) l.glitch--;
     }
@@ -1034,7 +1016,6 @@ const canvas = document.getElementById('fluid-canvas');
       ctx.textBaseline = 'alphabetic';
       ctx.fillStyle = grad;
 
-      // Glitch effect
       if (l.glitch > 0) {
         ctx.shadowColor = '#00ffaa';
         ctx.shadowBlur = 20;
@@ -1056,7 +1037,6 @@ const canvas = document.getElementById('fluid-canvas');
     requestAnimationFrame(loop);
   }
 
-  // Mouse tracking relative to canvas
   nc.addEventListener('mousemove', e => {
     const r = nc.getBoundingClientRect();
     mouse.x = (e.clientX - r.left) * dpr;
@@ -1064,7 +1044,6 @@ const canvas = document.getElementById('fluid-canvas');
   });
   nc.addEventListener('mouseleave', () => { mouse.x = -999; mouse.y = -999; });
 
-  // Touch
   nc.addEventListener('touchmove', e => {
     e.preventDefault();
     const r = nc.getBoundingClientRect();
@@ -1072,7 +1051,6 @@ const canvas = document.getElementById('fluid-canvas');
     mouse.y = (e.touches[0].clientY - r.top) * dpr;
   }, { passive: false });
 
-  // Wait for font load then init
   document.fonts.ready.then(() => {
     buildLetters();
     loop();
@@ -1081,13 +1059,10 @@ const canvas = document.getElementById('fluid-canvas');
   window.addEventListener('resize', () => { buildLetters(); });
 })();
 
-/* ═══════════ SITE JS ═══════════ */
-// Navbar scroll
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 80);
 
-  // Hero fluid fade
   const heroH = document.getElementById('hero').offsetHeight;
   if (window.scrollY > heroH * 0.7) {
     document.body.classList.remove('in-hero');
@@ -1098,7 +1073,6 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault();
@@ -1107,13 +1081,11 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// Scroll reveal
 const io = new IntersectionObserver(entries => {
   entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('visible'); io.unobserve(en.target); } });
 }, { threshold:0.08, rootMargin:'0px 0px -50px 0px' });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-// Form
 document.getElementById('cform').addEventListener('submit', function(e) {
   e.preventDefault();
   const btn = this.querySelector('button[type=submit]');
